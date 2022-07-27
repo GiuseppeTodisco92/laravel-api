@@ -1,32 +1,26 @@
 <template>
   <div>
-    <h1>Blog</h1>
-    <ul>
-      <li v-for="post in posts" :key="post.slug">
-        {{post.title}}
-      </li>
-    </ul>
+    <base-header/>
+    <base-main/>
+    <base-footer/>
+    
   </div>
 </template>
 
 <script>
+import BaseHeader from'../components/macro/BaseHeader.vue'
+import BaseMain from'../components/macro/BaseMain.vue'
+import BaseFooter from'../components/macro/BaseFooter.vue'
+
 export default {
     name: 'App',
-    data(){
-      return{
-        posts: []
-      };
+     
+    components: {
+      BaseHeader,
+        BaseMain,
+        BaseFooter,
     },
-    created(){
-      axios.get('http://127.0.0.1:8000/api/posts')
-      .then((res)=>{
-        this.posts = res.data;
-
-      })
-      .catch((e) => {
-        console.log(e);
-      })
-    },
+    
 }
 </script>
 
